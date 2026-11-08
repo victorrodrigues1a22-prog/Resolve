@@ -14,6 +14,17 @@ py -m venv .venv
 
 Acesse http://127.0.0.1:5000. O banco local `chamados.db` é criado automaticamente.
 
+## Implantar no Render
+
+Para um **Web Service** conectado a este repositório, configure:
+
+- **Build Command:** `pip install -r requirements.txt`
+- **Start Command:** `gunicorn app:app`
+
+O comando local do Windows (`.venv\Scripts\python.exe app.py`) não funciona no Render, que executa Linux. Defina também `SECRET_KEY` como variável de ambiente secreta no painel do Render. O Render inicia uma nova implantação quando esta correção chegar à branch `main`.
+
+> **Persistência:** este projeto usa SQLite em `chamados.db`. O disco padrão dos serviços Render pode ser efêmero; dados podem ser perdidos em reinicializações ou novas implantações. Para guardar contas e chamados de forma durável, configure um disco persistente compatível com seu plano ou migre para PostgreSQL antes de uso real.
+
 ## Contas e acesso
 
 - Solicitantes criam sua própria conta em **Criar conta**. O cadastro pede nome, usuário, e-mail e senha de pelo menos 12 caracteres.

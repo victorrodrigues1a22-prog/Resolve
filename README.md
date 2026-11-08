@@ -8,9 +8,8 @@ Abra a pasta do projeto no VS Code e rode no terminal:
 
 ```powershell
 py -m venv .venv
-.\.venv\Scripts\Activate.ps1
-python -m pip install -r requirements.txt
-python app.py
+.\.venv\Scripts\python.exe -m pip install -r requirements.txt
+.\.venv\Scripts\python.exe app.py
 ```
 
 Acesse http://127.0.0.1:5000. O banco local `chamados.db` é criado automaticamente.

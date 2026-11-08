@@ -46,6 +46,12 @@ static/                     estilos
 
 As páginas usam `extends` para compartilhar o cabeçalho e a estrutura comum. Cada tela e cada conjunto de rotas permanece em arquivo próprio.
 
-## Privacidade e implantação
+## Aviso para quem clonar ou implantar este projeto
 
-O banco SQLite local está ignorado pelo Git e não deve ser publicado. Na atualização, as antigas contas de demonstração são anonimizadas sem apagar os chamados vinculados. O texto livre de chamados/comentários pode conter dados pessoais inseridos pelos usuários; revise esses registros antes de usar ou compartilhar uma cópia do banco. Antes de publicar o serviço, configure `SECRET_KEY` aleatória, HTTPS, proteção CSRF, limitação de tentativas de login, backups e provedor real de notificações. O servidor Flask embutido é apenas para desenvolvimento.
+**Antes de usar este sistema com pessoas ou dados reais, leia estes cuidados:**
+
+- O arquivo `chamados.db` contém contas, chamados e conversas. Ele é ignorado pelo Git de propósito: não o adicione nem envie ao repositório. Faça cópias de segurança em local protegido.
+- Descrições e comentários são texto livre e podem incluir dados pessoais. Revise e remova essas informações antes de compartilhar uma cópia do banco. A migração anonimiza os nomes das antigas contas de demonstração, mas preserva os chamados e não apaga informações pessoais digitadas no conteúdo.
+- Defina uma `SECRET_KEY` forte e exclusiva no ambiente antes de disponibilizar o serviço. Não publique essa chave nem credenciais no código ou no Git.
+- O cadastro aberto cria apenas contas de solicitante. Crie contas da equipe de TI pelo comando `python -m support.create_ti` e limite esse acesso às pessoas autorizadas.
+- Esta versão ainda precisa de proteção CSRF, limite de tentativas de login, HTTPS, backups protegidos e configuração de um servidor WSGI de produção. O servidor iniciado por `python app.py` é destinado somente ao desenvolvimento local.
